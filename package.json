@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
+    "fmt": "cd src-tauri && cargo fmt",
     "preview": "vite preview",
     "tauri": "tauri",
     "lint": "eslint .",
@@ -14,6 +15,8 @@
   },
   "dependencies": {
     "@tauri-apps/api": "^1.2.0",
+    "pinia": "^2.0.33",
+    "tauri-plugin-fs-extra-api": "github:tauri-apps/tauri-plugin-fs-extra",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },
@@ -22,6 +25,7 @@
     "@tauri-apps/cli": "^1.2.3",
     "@types/node": "^18.15.11",
     "@vitejs/plugin-vue": "^4.1.0",
+    "element-plus": "^2.3.2",
     "eslint": "^8.37.0",
     "markdown-it-link-attributes": "^4.0.1",
     "markdown-it-shiki": "^0.8.0",

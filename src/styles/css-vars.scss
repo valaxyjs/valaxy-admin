@@ -1,0 +1,11 @@
+:root {
+  --va-c-bg: #fff;
+  --va-c-bg-alt: #f5f5f5;
+  --va-c-text: #000;
+}
+
+html.dark {
+  --va-c-bg: #000;
+  --va-c-bg-alt: #1a1a1a;
+  --va-c-text: #fff;
+}

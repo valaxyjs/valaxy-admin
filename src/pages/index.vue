@@ -1,21 +1,25 @@
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
+
+// import { onMounted } from 'vue'
+// import { entries } from '~/utils'
+
+// onMounted(() => {
+//   console.log('mounted')
+//   console.log('entries', entries)
+// })
 </script>
 
 <template>
   <div class="mb-4">
-    <a href="https://tauri.app/" target="_blank">
-      <img src="../../src-tauri/icons/icon.png" class="logo tauri" alt="Tauri logo">
+    <a href="https://valaxy.site/" target="_blank">
+      <img src="/valaxy-logo.png" class="logo valaxy" alt="Valaxy logo">
     </a>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo">
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="../assets/vue.svg" class="logo vue" alt="Vue logo">
-    </a>
+
+    <!-- entries {{ entries }} -->
   </div>
-  <HelloWorld msg="Tauri + Vite + Vue" />
+  <HelloValaxy />
 </template>
 
 <style scoped>
@@ -26,13 +30,8 @@
   will-change: filter;
   transition: 0.2s;
 }
+/* todo valaxy */
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.tauri:hover {
-  filter: drop-shadow(0 0 2em #ffd500aa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>
