@@ -7,7 +7,7 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "Tauri Vite Vue",
+    "productName": "Valaxy Admin",
     "version": "0.1.0"
   },
   "tauri": {
