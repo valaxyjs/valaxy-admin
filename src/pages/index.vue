@@ -2,6 +2,8 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 
+import { useAppStore } from '~/stores/app'
+
 // import { onMounted } from 'vue'
 // import { entries } from '~/utils'
 
@@ -9,17 +11,25 @@
 //   console.log('mounted')
 //   console.log('entries', entries)
 // })
+
+const app = useAppStore()
 </script>
 
 <template>
-  <div class="mb-4">
+  <div v-if="!app.folderPath">
     <a href="https://valaxy.site/" target="_blank">
       <img src="/valaxy-logo.png" class="logo valaxy" alt="Valaxy logo">
     </a>
 
-    <!-- entries {{ entries }} -->
+    <h1 font="bold">
+      Valaxy Admin
+    </h1>
+
+    <HelloValaxy />
   </div>
-  <HelloValaxy />
+  <div v-else>
+    <MdMetaTable />
+  </div>
 </template>
 
 <style scoped>

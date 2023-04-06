@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAppStore } from '~/stores/app'
+import { setFolderEntries, useAppStore } from '~/stores/app'
 import { getFolderEntries } from '~/tauri/fs'
 import { openFolderDialog } from '~/utils'
 
@@ -9,7 +9,8 @@ async function openFolder() {
   app.folderPath = await openFolderDialog()
 
   // fileList.value = await readFolderApi(app.folderPath)
-  app.setFolderEntries(await getFolderEntries(app.folderPath))
+
+  setFolderEntries(await getFolderEntries(app.folderPath))
   // const entries = await getEntries()
   // processEntries(entries)
   // console.log(entries)
@@ -18,10 +19,6 @@ async function openFolder() {
 </script>
 
 <template>
-  <h1 font="bold">
-    Valaxy Admin
-  </h1>
-
   <div class="card">
     <button class="t-button mb-4" type="button" @click="openFolder">
       Open Folder ...

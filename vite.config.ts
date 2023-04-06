@@ -11,6 +11,8 @@ import Markdown from 'vite-plugin-vue-markdown'
 import LinkAttributes from 'markdown-it-link-attributes'
 import Shiki from 'markdown-it-shiki'
 
+import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
+
 // https://vitejs.dev/config/
 export default defineConfig({
   // prevent vite from obscuring rust errors
@@ -88,4 +90,19 @@ export default defineConfig({
       },
     }),
   ],
+
+  optimizeDeps: {
+    esbuildOptions: {
+      // Node.js global to browser globalThis
+      define: {
+        global: 'globalThis',
+      },
+      // Enable esbuild polyfill plugins
+      plugins: [
+        NodeGlobalsPolyfillPlugin({
+          buffer: true,
+        }),
+      ],
+    },
+  },
 })

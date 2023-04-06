@@ -11,6 +11,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     BaseFooter: typeof import('./components/BaseFooter.vue')['default']
     HelloValaxy: typeof import('./components/HelloValaxy.vue')['default']
+    MdMetaTable: typeof import('./components/MdMetaTable.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     VASidebar: typeof import('./components/VASidebar.vue')['default']

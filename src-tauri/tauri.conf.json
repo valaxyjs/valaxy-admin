@@ -18,6 +18,10 @@
         "save": true
       },
       "fs": {
+        "all": true,
+        "scope": ["*"]
+      },
+      "path": {
         "all": true
       }
     },
