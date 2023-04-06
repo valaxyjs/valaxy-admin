@@ -8,7 +8,7 @@ dependencies:
     specifier: ^2.0.33
     version: 2.0.33(typescript@4.9.3)(vue@3.2.47)
   tauri-plugin-fs-extra-api:
-    specifier: github:tauri-apps/tauri-plugin-fs-extra
+    specifier: git://github.com/tauri-apps/tauri-plugin-fs-extra
     version: github.com/tauri-apps/tauri-plugin-fs-extra/643d71029598f662132ddf09494c12dd7b9d4a3e
   vue:
     specifier: ^3.2.47
@@ -4201,7 +4201,7 @@ packages:
     dev: true
 
   github.com/tauri-apps/tauri-plugin-fs-extra/643d71029598f662132ddf09494c12dd7b9d4a3e:
-    resolution: {commit: 643d71029598f662132ddf09494c12dd7b9d4a3e, repo: git+ssh://git@github.com/tauri-apps/tauri-plugin-fs-extra.git, type: git}
+    resolution: {tarball: https://codeload.github.com/tauri-apps/tauri-plugin-fs-extra/tar.gz/643d71029598f662132ddf09494c12dd7b9d4a3e}
     name: tauri-plugin-fs-extra-api
     version: 0.0.0
     dependencies:
