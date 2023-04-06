@@ -17,7 +17,11 @@ export async function readFolderApi(folderPath: string) {
 }
 
 export async function getFolderEntries(folderPath: string) {
-  const entries = await readDir(folderPath)
+  if (!folderPath)
+    return []
+  const entries = await readDir(folderPath, {
+    // recursive: true,
+  })
   return entries
 }
 

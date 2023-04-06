@@ -9,7 +9,7 @@ async function openFolder() {
   app.folderPath = await openFolderDialog()
 
   // fileList.value = await readFolderApi(app.folderPath)
-  app.folderEntries = await getFolderEntries(app.folderPath)
+  app.setFolderEntries(await getFolderEntries(app.folderPath))
   // const entries = await getEntries()
   // processEntries(entries)
   // console.log(entries)
@@ -30,15 +30,6 @@ async function openFolder() {
     <div>
       {{ app.folderPath }}
     </div>
-
-    <ul text="left">
-      <li
-        v-for="entry in app.folderEntries" :key="entry.name"
-        class="list-circle"
-      >
-        {{ entry.name }}
-      </li>
-    </ul>
   </div>
 </template>
 
