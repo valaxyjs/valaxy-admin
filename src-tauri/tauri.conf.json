@@ -12,7 +12,11 @@
   },
   "tauri": {
     "allowlist": {
-      "all": true,
+      "dialog": {
+        "all": true,
+        "open": true,
+        "save": true
+      },
       "fs": {
         "all": true
       }
@@ -61,7 +65,7 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "Tauri Vite Vue",
+        "title": "Valaxy Admin",
         "width": 800
       }
     ]
