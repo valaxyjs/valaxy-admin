@@ -4,13 +4,13 @@
       <VASidebar />
     </el-aside>
     <el-container h="full">
-      <el-header>Header</el-header>
+      <!-- <el-header>Header</el-header> -->
       <el-main>
         <RouterView />
       </el-main>
-      <el-footer>
+      <!-- <el-footer>
         <BaseFooter />
-      </el-footer>
+      </el-footer> -->
     </el-container>
   </main>
 </template>
