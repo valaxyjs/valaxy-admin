@@ -25,6 +25,7 @@
     "@tauri-apps/cli": "^1.2.3",
     "@types/node": "^18.15.11",
     "@vitejs/plugin-vue": "^4.1.0",
+    "consola": "^2.15.3",
     "element-plus": "^2.3.2",
     "eslint": "^8.37.0",
     "markdown-it-link-attributes": "^4.0.1",

@@ -1,17 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { useAppStore } from '~/stores/app'
-import { readFolderApi } from '~/tauri'
+import { getFolderEntries } from '~/tauri/fs'
 import { openFolderDialog } from '~/utils'
 
 const app = useAppStore()
 
-const fileList = ref<string[]>()
-
 async function openFolder() {
   app.folderPath = await openFolderDialog()
 
-  fileList.value = await readFolderApi(app.folderPath)
+  // fileList.value = await readFolderApi(app.folderPath)
+  app.folderEntries = await getFolderEntries(app.folderPath)
   // const entries = await getEntries()
   // processEntries(entries)
   // console.log(entries)
@@ -33,9 +31,12 @@ async function openFolder() {
       {{ app.folderPath }}
     </div>
 
-    <ul>
-      <li v-for="name in fileList" :key="name">
-        {{ name }}
+    <ul text="left">
+      <li
+        v-for="entry in app.folderEntries" :key="entry.name"
+        class="list-circle"
+      >
+        {{ entry.name }}
       </li>
     </ul>
   </div>

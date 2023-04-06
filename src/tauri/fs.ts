@@ -1,6 +1,9 @@
 import { invoke } from '@tauri-apps/api'
-import { BaseDirectory, readDir } from '@tauri-apps/api/fs'
+import type { FileEntry } from '@tauri-apps/api/fs'
+import { readDir } from '@tauri-apps/api/fs'
 
+// to remove. use api directly
+// invoke example
 export async function readFolderApi(folderPath: string) {
   try {
     const res = (await invoke('open_folder', {
@@ -13,22 +16,13 @@ export async function readFolderApi(folderPath: string) {
   }
 }
 
-export async function getEntries() {
-  const entries = await readDir('users', {
-    dir: BaseDirectory.AppData,
-    recursive: true,
-  })
+export async function getFolderEntries(folderPath: string) {
+  const entries = await readDir(folderPath)
   return entries
 }
 
-export async function processEntries() {
-  const entries = await readDir('users', {
-    dir: BaseDirectory.AppData,
-    recursive: true,
-  })
-
+export async function processEntries(entries: FileEntry[]) {
   for (const entry of entries) {
-    console.log(`Entry: ${entry.path}`)
     if (entry.children)
       processEntries(entry.children)
   }

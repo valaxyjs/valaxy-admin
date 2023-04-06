@@ -1,12 +1,13 @@
 import { listen } from '@tauri-apps/api/event'
+import consola from 'consola'
 
 export async function listenMenuIdApi() {
   try {
     await listen('menu_id', async ({ event, payload }) => {
-      console.log('listen menu id', event, payload)
+      consola.info('listen menu id', event, payload)
     })
   }
   catch (e) {
-    console.log('listen error', e)
+    consola.error('listen error', e)
   }
 }
