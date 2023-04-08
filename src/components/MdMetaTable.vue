@@ -113,7 +113,7 @@ async function openInEditor(url: string) {
       <template #default="scope">
         <!-- {{ scope.row.data }} -->
         <el-button size="small" @click="openInEditor(scope.row.path)">
-          Edit
+          <div i-vscode-icons:file-type-vscode />
         </el-button>
       </template>
     </el-table-column>

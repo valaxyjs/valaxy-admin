@@ -1,6 +1,6 @@
 import type { FileEntry } from '@tauri-apps/api/fs'
 import { readTextFile } from '@tauri-apps/api/fs'
-import type { Post } from 'valaxy'
+import type { Post } from 'valaxy/types'
 import matter from 'gray-matter'
 
 export async function getFilesMetadata(entries: FileEntry[]): Promise<Post[]> {
