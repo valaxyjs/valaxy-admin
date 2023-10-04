@@ -22,6 +22,9 @@ export async function getFolderEntries(folderPath: string) {
   if (!folderPath)
     return []
 
+  // convert windows path to unix path
+  // folderPath = folderPath.replace(/\\/g, '/')
+
   let entries: FileEntry[] = []
   try {
     entries = await readDir(folderPath, {
