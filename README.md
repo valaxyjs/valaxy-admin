@@ -1,6 +1,8 @@
 # valaxy-admin
 
-Valaxy Admin client based on [Tauri](https://tauri.app/).
+Valaxy Admin client based on [Tauri](https://tauri.app/). Migrate to [Electron](https://www.electronjs.org/).
+
+I had to migrate from tauri to electron because I needed a lot of node apis.
 
 ## Prerequisites
 
