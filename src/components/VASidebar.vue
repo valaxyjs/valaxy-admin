@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import type { FileEntry } from '@tauri-apps/api/fs'
-import { computed, onMounted } from 'vue'
+import { computed, watch } from 'vue'
 import type Node from 'element-plus/es/components/tree/src/model/node'
-import { setFolderEntries, useAppStore } from '~/stores/app'
-import { getFolderEntries } from '~/tauri'
+import { useAppStore } from '~/stores/app'
+import { getFolderEntries, sortEntries } from '~/tauri'
 
 const app = useAppStore()
 
@@ -14,9 +14,13 @@ const defaultProps = {
 }
 
 // get folder entries on mount if folderPath is set
-onMounted(async () => {
-  if (app.folderPath)
-    setFolderEntries(await getFolderEntries(app.folderPath))
+watch(() => app.folderPath, async () => {
+  if (app.folderPath) {
+    const entries = await getFolderEntries(app.folderPath)
+    app.folderEntries = sortEntries(entries)
+  }
+}, {
+  immediate: true,
 })
 
 function convertEntriesToTree(entries: FileEntry[]) {

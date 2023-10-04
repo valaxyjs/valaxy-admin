@@ -36,7 +36,8 @@ pub fn get_menu() -> Menu {
         Menu::new().add_native_item(MenuItem::About("Valaxy Admin".to_string(), about_metadata));
 
     // file menu
-    let open_folder = CustomMenuItem::new("open", "Open Folder").accelerator("CmdOrControl+F");
+    let open_folder =
+        CustomMenuItem::new("open_folder", "Open Folder").accelerator("CmdOrControl+F");
     let create_item = CustomMenuItem::new("create", "New File").accelerator("CmdOrControl+N");
 
     // menu

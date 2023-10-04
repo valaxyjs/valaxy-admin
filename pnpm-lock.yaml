@@ -31,6 +31,12 @@ devDependencies:
   '@esbuild-plugins/node-globals-polyfill':
     specifier: ^0.2.3
     version: 0.2.3(esbuild@0.18.20)
+  '@iconify-json/ic':
+    specifier: ^1.1.14
+    version: 1.1.14
+  '@iconify-json/logos':
+    specifier: ^1.1.37
+    version: 1.1.37
   '@iconify-json/vscode-icons':
     specifier: ^1.1.28
     version: 1.1.28
@@ -501,6 +507,18 @@ packages:
 
   /@iconify-json/carbon@1.1.21:
     resolution: {integrity: sha512-bK2cMVM4noBU+FGlay433flpXLRzQu0ED095iAnoO6ka3yb4uz0lvb8acpN5gthyGLJ89C4HpfIbQZLQnMKQww==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/ic@1.1.14:
+    resolution: {integrity: sha512-vbATa9uwb9pIsRWQ+iXObQCgLTePk/0vo4shBr3Td0GnTjsAU/7VUGTkrZFVf5vpgiG6OsXkcKMPzBPvt966sg==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/logos@1.1.37:
+    resolution: {integrity: sha512-H2S8frTEznk6paX2kMzeUGn4KSiykghvO0b8UvEDd1fFFzt0WxCXpP1tBv67XaWK99e6JgA34hhv4lRGAm1hJg==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true

@@ -16,19 +16,27 @@ const app = useAppStore()
 </script>
 
 <template>
-  <div v-if="!app.folderPath">
-    <a href="https://valaxy.site/" target="_blank">
-      <img src="/valaxy-logo.png" class="logo valaxy" alt="Valaxy logo">
-    </a>
+  <div flex h="full" w="full">
+    <el-aside width="250px" border="r-1px r-gray-200">
+      <VASidebar />
+    </el-aside>
 
-    <h1 font="bold">
-      Valaxy Admin
-    </h1>
+    <div h="full" flex="~ grow" overflow-y="scroll">
+      <template v-if="!app.folderPath">
+        <a href="https://valaxy.site/" target="_blank">
+          <img src="/valaxy-logo.png" class="logo valaxy" alt="Valaxy logo">
+        </a>
 
-    <HelloValaxy />
-  </div>
-  <div v-else>
-    <MdMetaTable />
+        <h1 font="bold">
+          Valaxy Admin
+        </h1>
+
+        <HelloValaxy />
+      </template>
+      <template v-else>
+        <MdMetaTable />
+      </template>
+    </div>
   </div>
 </template>
 

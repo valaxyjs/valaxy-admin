@@ -12,6 +12,7 @@ declare module 'vue' {
     MdMetaTable: typeof import('./components/MdMetaTable.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TheLeftMenu: typeof import('./components/TheLeftMenu.vue')['default']
     VASidebar: typeof import('./components/VASidebar.vue')['default']
   }
 }

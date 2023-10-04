@@ -22,9 +22,6 @@ export async function getFolderEntries(folderPath: string) {
   if (!folderPath)
     return []
 
-  // convert windows path to unix path
-  // folderPath = folderPath.replace(/\\/g, '/')
-
   let entries: FileEntry[] = []
   try {
     entries = await readDir(folderPath, {
@@ -43,4 +40,19 @@ export async function processEntries(entries: FileEntry[]) {
     if (entry.children)
       processEntries(entry.children)
   }
+}
+
+/**
+ * sort entries by path
+ * @param entries
+ */
+export function sortEntries(entries: FileEntry[]) {
+  return entries.sort((a, b) => {
+    // isDir when entry has children
+    if (a.children && !b.children)
+      return -1
+    if (!a.children && b.children)
+      return 1
+    return a.path.localeCompare(b.path)
+  })
 }

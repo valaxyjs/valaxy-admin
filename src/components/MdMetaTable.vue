@@ -1,21 +1,34 @@
 <script lang="ts" setup>
-import { path } from '@tauri-apps/api'
-import { ref, watch } from 'vue'
-import type { Post } from 'valaxy/types'
+import { dialog } from '@tauri-apps/api'
+import { rel, resolve } from '@tauri-apps/api/path'
+import { exists } from '@tauri-apps/api/fs'
+import { onMounted, ref, watch } from 'vue'
+import type { Post } from 'valaxy'
 import dayjs from 'dayjs'
+import { open } from '@tauri-apps/api/shell'
 import { useAppStore } from '~/stores/app'
-import { getFilesMetadata, getFolderEntries } from '~/tauri'
+import { getFilesMetadata, getFolderEntries } from '~/tauri/fs'
 
 const app = useAppStore()
 
 const postsMetadata = ref<Post[]>([])
+const postsFolder = ref('')
 
 async function getPostsMetadata() {
   let filesMetadata: Post[] = []
-  const postsFolder = await path.join(app.folderPath, 'pages/posts')
+  postsFolder.value = await resolve(app.folderPath, 'pages', 'posts')
+  // // alert(postsFolder)
+  // alert(await exists(postsFolder))
+  if (!(await exists(postsFolder.value))) {
+    dialog.message('Posts folder not found', {
+      type: 'error',
+    })
+    return
+  }
+
   // tauri exists not working
   if (app.folderPath) {
-    const postsEntries = await getFolderEntries(postsFolder)
+    const postsEntries = await getFolderEntries(postsFolder.value)
     filesMetadata = await getFilesMetadata(postsEntries)
   }
 
@@ -24,7 +37,8 @@ async function getPostsMetadata() {
 }
 
 watch(() => app.folderPath, async () => {
-  getPostsMetadata()
+  if (app.folderPath)
+    getPostsMetadata()
 }, {
   immediate: true,
 })
@@ -41,18 +55,17 @@ async function openInEditor(url: string) {
   await fetch(`/__open-in-editor?file=${encodeURIComponent(url)}`)
   return true
 }
+
+async function openInBrowser(path: string) {
+  let result = path.replace(postsFolder.value, '')
+  result.replace('\\', '/')
+  result = result.slice(1, result.length - 3)
+  open(`https://yunyoujun.cn` + `/posts/${result}`)
+}
 </script>
 
 <template>
   <el-table :data="postsMetadata" style="width: 100%">
-    <!-- <el-table-column prop="name" label="Name">
-      <template #default="scope">
-        <div class="text-xs">
-          {{ scope.row.name }}
-        </div>
-      </template>
-    </el-table-column> -->
-
     <el-table-column prop="data.title" label="Title">
       <template #default="scope">
         <div class="text-xs" font="serif black">
@@ -79,7 +92,9 @@ async function openInEditor(url: string) {
       </template>
     </el-table-column>
 
-    <el-table-column prop="data.tags" label="Tags">
+    <el-table-column
+      prop="data.tags" label="Tags"
+    >
       <template #default="scope">
         <div flex="~ wrap" items="center">
           <el-tag
@@ -112,6 +127,9 @@ async function openInEditor(url: string) {
     <el-table-column label="Operations">
       <template #default="scope">
         <!-- {{ scope.row.data }} -->
+        <el-button size="small" @click="openInBrowser(scope.row.path)">
+          <div i-ic:round-open-in-browser />
+        </el-button>
         <el-button size="small" @click="openInEditor(scope.row.path)">
           <div i-vscode-icons:file-type-vscode />
         </el-button>
