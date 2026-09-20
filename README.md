@@ -6,7 +6,7 @@ Standalone Valaxy Admin development has moved to **[Yunle CMS (云栈)](https://
 
 云栈统一承接 Web、桌面和后续手机端的写作入口。桌面功能在云栈中第一方适配 Valaxy，不再维护独立的 Valaxy 客户端。
 
-**Current status:** the Web entry is available; the Electron desktop client is a development preview with local macOS arm64 verification. A signed public desktop release, Windows/Linux installation verification, desktop cloud synchronization and a mobile app are still pending. The Web URL is not a desktop download link.
+**Current status:** the Web entry is available; the Electron desktop client is a development preview with local macOS arm64 verification. Source and packaged-app tests, plus unsigned installer builds, have passed CI on macOS, Windows and Linux. A signed public desktop release, clean-device installation and upgrade verification, desktop cloud synchronization and a mobile app are still pending. The Web URL is not a desktop download link.
 
 | Prototype capability | Successor status |
 | --- | --- |
