@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { shell } from '@tauri-apps/api'
 import { Command } from '@tauri-apps/api/shell'
 import { useAppStore } from '~/stores/app'
 

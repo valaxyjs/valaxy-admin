@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { dialog } from '@tauri-apps/api'
-import { rel, resolve } from '@tauri-apps/api/path'
+import { resolve } from '@tauri-apps/api/path'
 import { exists } from '@tauri-apps/api/fs'
-import { onMounted, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 import type { Post } from 'valaxy'
 import dayjs from 'dayjs'
 import { open } from '@tauri-apps/api/shell'
